@@ -22,7 +22,7 @@ public class Initialization {
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
         driver.get("https://tutorialsninja.com/demo/");
 
         return driver;
