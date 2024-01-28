@@ -12,9 +12,14 @@ public class Search extends Initialization {
 
     WebDriver driver;
 
+    public Search(){
+        super();
+        System.out.println("search clas constructor executed");
+    }
+
     @BeforeMethod
     public void setUp(){
-        driver = initializeBrowser("chrome");
+        driver = initializeBrowser(prop.getProperty("browser"));
     }
 
     @AfterMethod

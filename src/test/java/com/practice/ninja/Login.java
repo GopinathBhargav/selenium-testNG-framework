@@ -14,9 +14,14 @@ public class Login extends Initialization {
 
     WebDriver driver;
 
+    public Login(){
+        super();
+        System.out.println("Login clas constructor executed");
+    }
+
     @BeforeMethod
     public void setUp(){
-        driver = initializeBrowser("chrome");
+        driver = initializeBrowser(prop.getProperty("browser"));
         driver.findElement(By.xpath("//span[text()='My Account']")).click();
     }
 
@@ -29,8 +34,8 @@ public class Login extends Initialization {
     public void verifyWithValidCredentials(){
 
         driver.findElement(By.linkText("Login")).click();
-        driver.findElement(By.id("input-email")).sendKeys("zabc@gmail.com");
-        driver.findElement(By.id("input-password")).sendKeys("123456789");
+        driver.findElement(By.id("input-email")).sendKeys(prop.getProperty("validEmail"));
+        driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("ValidPassword"));
         driver.findElement(By.xpath("//input[@type='submit']")).click();
         String actualText = driver.findElement(By.xpath("//a[text()='Edit your account information']")).getText();
         Assert.assertEquals(actualText, "Edit your account information");
@@ -49,8 +54,6 @@ public class Login extends Initialization {
         Assert.assertEquals(actualText, "Warning: No match for E-Mail Address and/or Password.");
 
     }
-
-
 
 
 }

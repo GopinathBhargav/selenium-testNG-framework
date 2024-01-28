@@ -13,9 +13,15 @@ public class Registration extends Initialization {
 
     WebDriver driver;
 
+    public Registration(){
+        super();
+        System.out.println("Registartion clas constructor executed");
+    }
+
     @BeforeMethod
     public void setUp(){
-        driver = initializeBrowser("chrome");
+
+        driver = initializeBrowser( prop.getProperty("browser"));
         driver.findElement(By.xpath("//span[text()='My Account']")).click();
     }
 
